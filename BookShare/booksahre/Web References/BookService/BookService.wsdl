@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="checkBookExist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="isbn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkBookExistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="checkBookExistResult" type="tns:Book" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Book">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idUser" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="author" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISBN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="status" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="getImage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="getImages" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="createBook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ISBN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="author" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="language" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idUser" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createBookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="createBookResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBookById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBook" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBookByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBookByIdResult" type="tns:Book" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="searchBook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="page" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="searchBookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="searchBookResult" type="tns:ArrayOfBook" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBook">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Book" nillable="true" type="tns:Book" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getTotalPageSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTotalPageSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getTotalPageSearchResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="uploadCoverBook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rootPath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="bytes" type="tns:ArrayOfBase64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="idBook" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBase64Binary">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="base64Binary" nillable="true" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="uploadCoverBookResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getBookCovers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBook" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBookCoversResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBookCoversResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="reviewBook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBook" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idUser" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="reviewBookResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getTopReview">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="top" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idBook" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTopReviewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTopReviewResult" type="tns:ArrayOfReview" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfReview">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Review" nillable="true" type="tns:Review" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Review">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idBook" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idUser" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="checkBookExistSoapIn">
+    <wsdl:part name="parameters" element="tns:checkBookExist" />
+  </wsdl:message>
+  <wsdl:message name="checkBookExistSoapOut">
+    <wsdl:part name="parameters" element="tns:checkBookExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="createBookSoapIn">
+    <wsdl:part name="parameters" element="tns:createBook" />
+  </wsdl:message>
+  <wsdl:message name="createBookSoapOut">
+    <wsdl:part name="parameters" element="tns:createBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBookByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getBookById" />
+  </wsdl:message>
+  <wsdl:message name="getBookByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getBookByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchBookSoapIn">
+    <wsdl:part name="parameters" element="tns:searchBook" />
+  </wsdl:message>
+  <wsdl:message name="searchBookSoapOut">
+    <wsdl:part name="parameters" element="tns:searchBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTotalPageSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:getTotalPageSearch" />
+  </wsdl:message>
+  <wsdl:message name="getTotalPageSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:getTotalPageSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="uploadCoverBookSoapIn">
+    <wsdl:part name="parameters" element="tns:uploadCoverBook" />
+  </wsdl:message>
+  <wsdl:message name="uploadCoverBookSoapOut">
+    <wsdl:part name="parameters" element="tns:uploadCoverBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBookCoversSoapIn">
+    <wsdl:part name="parameters" element="tns:getBookCovers" />
+  </wsdl:message>
+  <wsdl:message name="getBookCoversSoapOut">
+    <wsdl:part name="parameters" element="tns:getBookCoversResponse" />
+  </wsdl:message>
+  <wsdl:message name="reviewBookSoapIn">
+    <wsdl:part name="parameters" element="tns:reviewBook" />
+  </wsdl:message>
+  <wsdl:message name="reviewBookSoapOut">
+    <wsdl:part name="parameters" element="tns:reviewBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTopReviewSoapIn">
+    <wsdl:part name="parameters" element="tns:getTopReview" />
+  </wsdl:message>
+  <wsdl:message name="getTopReviewSoapOut">
+    <wsdl:part name="parameters" element="tns:getTopReviewResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BookServiceSoap">
+    <wsdl:operation name="checkBookExist">
+      <wsdl:input message="tns:checkBookExistSoapIn" />
+      <wsdl:output message="tns:checkBookExistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="createBook">
+      <wsdl:input message="tns:createBookSoapIn" />
+      <wsdl:output message="tns:createBookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBookById">
+      <wsdl:input message="tns:getBookByIdSoapIn" />
+      <wsdl:output message="tns:getBookByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="searchBook">
+      <wsdl:input message="tns:searchBookSoapIn" />
+      <wsdl:output message="tns:searchBookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTotalPageSearch">
+      <wsdl:input message="tns:getTotalPageSearchSoapIn" />
+      <wsdl:output message="tns:getTotalPageSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="uploadCoverBook">
+      <wsdl:input message="tns:uploadCoverBookSoapIn" />
+      <wsdl:output message="tns:uploadCoverBookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBookCovers">
+      <wsdl:input message="tns:getBookCoversSoapIn" />
+      <wsdl:output message="tns:getBookCoversSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="reviewBook">
+      <wsdl:input message="tns:reviewBookSoapIn" />
+      <wsdl:output message="tns:reviewBookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTopReview">
+      <wsdl:input message="tns:getTopReviewSoapIn" />
+      <wsdl:output message="tns:getTopReviewSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BookServiceSoap" type="tns:BookServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="checkBookExist">
+      <soap:operation soapAction="http://tempuri.org/checkBookExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createBook">
+      <soap:operation soapAction="http://tempuri.org/createBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBookById">
+      <soap:operation soapAction="http://tempuri.org/getBookById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchBook">
+      <soap:operation soapAction="http://tempuri.org/searchBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalPageSearch">
+      <soap:operation soapAction="http://tempuri.org/getTotalPageSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uploadCoverBook">
+      <soap:operation soapAction="http://tempuri.org/uploadCoverBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBookCovers">
+      <soap:operation soapAction="http://tempuri.org/getBookCovers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reviewBook">
+      <soap:operation soapAction="http://tempuri.org/reviewBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTopReview">
+      <soap:operation soapAction="http://tempuri.org/getTopReview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BookServiceSoap12" type="tns:BookServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="checkBookExist">
+      <soap12:operation soapAction="http://tempuri.org/checkBookExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createBook">
+      <soap12:operation soapAction="http://tempuri.org/createBook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBookById">
+      <soap12:operation soapAction="http://tempuri.org/getBookById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchBook">
+      <soap12:operation soapAction="http://tempuri.org/searchBook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalPageSearch">
+      <soap12:operation soapAction="http://tempuri.org/getTotalPageSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uploadCoverBook">
+      <soap12:operation soapAction="http://tempuri.org/uploadCoverBook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBookCovers">
+      <soap12:operation soapAction="http://tempuri.org/getBookCovers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reviewBook">
+      <soap12:operation soapAction="http://tempuri.org/reviewBook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTopReview">
+      <soap12:operation soapAction="http://tempuri.org/getTopReview" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BookService">
+    <wsdl:port name="BookServiceSoap" binding="tns:BookServiceSoap">
+      <soap:address location="http://localhost:40621/BookService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BookServiceSoap12" binding="tns:BookServiceSoap12">
+      <soap12:address location="http://localhost:40621/BookService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

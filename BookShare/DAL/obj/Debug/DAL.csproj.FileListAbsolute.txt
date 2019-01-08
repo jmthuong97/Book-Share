@@ -1,0 +1,14 @@
+D:\SE05095\C#\PROJECT\BookShare\DAL\bin\Debug\DAL.dll
+D:\SE05095\C#\PROJECT\BookShare\DAL\bin\Debug\DAL.pdb
+D:\SE05095\C#\PROJECT\BookShare\DAL\bin\Debug\Entity.dll
+D:\SE05095\C#\PROJECT\BookShare\DAL\bin\Debug\Entity.pdb
+D:\SE05095\C#\PROJECT\BookShare\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\SE05095\C#\PROJECT\BookShare\DAL\obj\Debug\DAL.dll
+D:\SE05095\C#\PROJECT\BookShare\DAL\obj\Debug\DAL.pdb
+D:\SE05095\C#\Laptop\PROJECT\BookShare\DAL\bin\Debug\DAL.dll
+D:\SE05095\C#\Laptop\PROJECT\BookShare\DAL\bin\Debug\DAL.pdb
+D:\SE05095\C#\Laptop\PROJECT\BookShare\DAL\bin\Debug\Entity.dll
+D:\SE05095\C#\Laptop\PROJECT\BookShare\DAL\bin\Debug\Entity.pdb
+D:\SE05095\C#\Laptop\PROJECT\BookShare\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\SE05095\C#\Laptop\PROJECT\BookShare\DAL\obj\Debug\DAL.dll
+D:\SE05095\C#\Laptop\PROJECT\BookShare\DAL\obj\Debug\DAL.pdb

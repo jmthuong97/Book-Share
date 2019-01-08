@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="booksahre.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="booksahre_UserService_UserService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:40621/UserService.asmx</Value>
+    </Setting>
+    <Setting Name="booksahre_TradingService_TradingService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:40621/TradingService.asmx</Value>
+    </Setting>
+    <Setting Name="booksahre_BookService_BookService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:40621/BookService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

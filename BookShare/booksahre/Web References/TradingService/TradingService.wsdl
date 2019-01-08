@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="NewFeed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="page" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewFeedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NewFeedResult" type="tns:ArrayOfTrading" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTrading">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Trading" nillable="true" type="tns:Trading" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Trading">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idOwner" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idBorrower" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idBook" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="statusBook" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="statusComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="createDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="completeDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="getBook" type="tns:Book" />
+          <s:element minOccurs="0" maxOccurs="1" name="getUser" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Book">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idUser" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="author" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISBN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="status" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="getImage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="getImages" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="fullName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="birthday" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="avatar" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="phoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="linkFacebook" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="userPoint" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="createDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getPages">
+        <s:complexType />
+      </s:element>
+      <s:element name="getPagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getPagesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createTrading">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idOwner" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idBook" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createTradingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="createTradingResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTradingByIdBook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idBook" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idOwner" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTradingByIdBookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTradingByIdBookResult" type="tns:ArrayOfTrading" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListBorrow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListBorrowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getListBorrowResult" type="tns:ArrayOfTradingDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTradingDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TradingDetail" nillable="true" type="tns:TradingDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TradingDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="bookID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="createDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getListLend">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListLendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getListLendResult" type="tns:ArrayOfTradingDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="doActionTrading">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="method" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idTrading" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="doActionTradingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="doActionTradingResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="NewFeedSoapIn">
+    <wsdl:part name="parameters" element="tns:NewFeed" />
+  </wsdl:message>
+  <wsdl:message name="NewFeedSoapOut">
+    <wsdl:part name="parameters" element="tns:NewFeedResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPagesSoapIn">
+    <wsdl:part name="parameters" element="tns:getPages" />
+  </wsdl:message>
+  <wsdl:message name="getPagesSoapOut">
+    <wsdl:part name="parameters" element="tns:getPagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="createTradingSoapIn">
+    <wsdl:part name="parameters" element="tns:createTrading" />
+  </wsdl:message>
+  <wsdl:message name="createTradingSoapOut">
+    <wsdl:part name="parameters" element="tns:createTradingResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTradingByIdBookSoapIn">
+    <wsdl:part name="parameters" element="tns:getTradingByIdBook" />
+  </wsdl:message>
+  <wsdl:message name="getTradingByIdBookSoapOut">
+    <wsdl:part name="parameters" element="tns:getTradingByIdBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="getListBorrowSoapIn">
+    <wsdl:part name="parameters" element="tns:getListBorrow" />
+  </wsdl:message>
+  <wsdl:message name="getListBorrowSoapOut">
+    <wsdl:part name="parameters" element="tns:getListBorrowResponse" />
+  </wsdl:message>
+  <wsdl:message name="getListLendSoapIn">
+    <wsdl:part name="parameters" element="tns:getListLend" />
+  </wsdl:message>
+  <wsdl:message name="getListLendSoapOut">
+    <wsdl:part name="parameters" element="tns:getListLendResponse" />
+  </wsdl:message>
+  <wsdl:message name="doActionTradingSoapIn">
+    <wsdl:part name="parameters" element="tns:doActionTrading" />
+  </wsdl:message>
+  <wsdl:message name="doActionTradingSoapOut">
+    <wsdl:part name="parameters" element="tns:doActionTradingResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TradingServiceSoap">
+    <wsdl:operation name="NewFeed">
+      <wsdl:input message="tns:NewFeedSoapIn" />
+      <wsdl:output message="tns:NewFeedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPages">
+      <wsdl:input message="tns:getPagesSoapIn" />
+      <wsdl:output message="tns:getPagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="createTrading">
+      <wsdl:input message="tns:createTradingSoapIn" />
+      <wsdl:output message="tns:createTradingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTradingByIdBook">
+      <wsdl:input message="tns:getTradingByIdBookSoapIn" />
+      <wsdl:output message="tns:getTradingByIdBookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getListBorrow">
+      <wsdl:input message="tns:getListBorrowSoapIn" />
+      <wsdl:output message="tns:getListBorrowSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getListLend">
+      <wsdl:input message="tns:getListLendSoapIn" />
+      <wsdl:output message="tns:getListLendSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="doActionTrading">
+      <wsdl:input message="tns:doActionTradingSoapIn" />
+      <wsdl:output message="tns:doActionTradingSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TradingServiceSoap" type="tns:TradingServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="NewFeed">
+      <soap:operation soapAction="http://tempuri.org/NewFeed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPages">
+      <soap:operation soapAction="http://tempuri.org/getPages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTrading">
+      <soap:operation soapAction="http://tempuri.org/createTrading" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTradingByIdBook">
+      <soap:operation soapAction="http://tempuri.org/getTradingByIdBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListBorrow">
+      <soap:operation soapAction="http://tempuri.org/getListBorrow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListLend">
+      <soap:operation soapAction="http://tempuri.org/getListLend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doActionTrading">
+      <soap:operation soapAction="http://tempuri.org/doActionTrading" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TradingServiceSoap12" type="tns:TradingServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="NewFeed">
+      <soap12:operation soapAction="http://tempuri.org/NewFeed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPages">
+      <soap12:operation soapAction="http://tempuri.org/getPages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTrading">
+      <soap12:operation soapAction="http://tempuri.org/createTrading" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTradingByIdBook">
+      <soap12:operation soapAction="http://tempuri.org/getTradingByIdBook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListBorrow">
+      <soap12:operation soapAction="http://tempuri.org/getListBorrow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListLend">
+      <soap12:operation soapAction="http://tempuri.org/getListLend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doActionTrading">
+      <soap12:operation soapAction="http://tempuri.org/doActionTrading" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TradingService">
+    <wsdl:port name="TradingServiceSoap" binding="tns:TradingServiceSoap">
+      <soap:address location="http://localhost:40621/TradingService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TradingServiceSoap12" binding="tns:TradingServiceSoap12">
+      <soap12:address location="http://localhost:40621/TradingService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

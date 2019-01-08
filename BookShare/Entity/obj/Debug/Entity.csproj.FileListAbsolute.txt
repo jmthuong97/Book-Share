@@ -1,0 +1,9 @@
+D:\SE05095\C#\PROJECT\BookShare\Entity\bin\Debug\Entity.dll
+D:\SE05095\C#\PROJECT\BookShare\Entity\bin\Debug\Entity.pdb
+D:\SE05095\C#\PROJECT\BookShare\Entity\obj\Debug\Entity.dll
+D:\SE05095\C#\PROJECT\BookShare\Entity\obj\Debug\Entity.pdb
+D:\SE05095\C#\PROJECT\BookShare\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+D:\SE05095\C#\Laptop\PROJECT\BookShare\Entity\bin\Debug\Entity.dll
+D:\SE05095\C#\Laptop\PROJECT\BookShare\Entity\bin\Debug\Entity.pdb
+D:\SE05095\C#\Laptop\PROJECT\BookShare\Entity\obj\Debug\Entity.dll
+D:\SE05095\C#\Laptop\PROJECT\BookShare\Entity\obj\Debug\Entity.pdb
